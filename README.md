@@ -73,6 +73,10 @@ and upgrade deliberately:
 }
 ```
 
+`v1` moves forward as profiles change in compatible ways, the way action tags
+do. A change that alters what an existing profile does to a repo gets `v2`
+instead, so pinned repos stay put until they opt in.
+
 ## Why automerge is safe without branch protection
 
 None of these repos protect their default branch — mihaibojin/website cannot on
