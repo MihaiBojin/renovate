@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Collect every non-major update into a single PR instead of one PR per dependency. Peer-locked packages that must move together end up in the same change, and one review covers the batch.",
+  "packageRules": [
+    {
+      "description": "One PR for all non-major updates",
+      "groupName": "non-major dependencies",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+    }
+  ]
+}

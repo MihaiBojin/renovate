@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Never automerge mise tool pins. The same versions are mirrored into files Renovate does not update, so a green build proves nothing about the copies left behind.",
+  "packageRules": [
+    {
+      "description": "mise tool pins are reviewed by hand",
+      "matchManagers": ["mise"],
+      "automerge": false,
+      "prBodyNotes": [
+        "⚠️ This bumps a tool version in `mise.toml`. Renovate updates that file only — check the mirrored copies (`.nvmrc`, `go.mod`, `engines.node`, workflow env) before merging."
+      ]
+    }
+  ]
+}

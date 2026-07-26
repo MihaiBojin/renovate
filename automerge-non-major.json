@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Merge non-major updates once CI is green, so an open Renovate PR means something needs attention. Majors are always left for review.",
+  "platformAutomerge": false,
+  "packageRules": [
+    {
+      "description": "Automerge non-major updates once every status check passes",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Hold an update back until its release has been public for 3 days, and hide updates that have not aged yet instead of raising a PR that cannot merge.",
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "packageRules": [
+    {
+      "description": "Minimum Release Age cannot be enforced for package replacements on non-npm ecosystems",
+      "matchDatasources": ["!npm"],
+      "matchUpdateTypes": ["replacement"],
+      "minimumReleaseAge": null,
+      "prBodyNotes": [
+        "⚠️ Renovate's replacement flow does not currently wire in release-age metadata (renovatebot/renovate#39400). Manually validate the Minimum Release Age for the replacement package."
+      ]
+    },
+    {
+      "description": "Minimum Release Age cannot be enforced for pin updates on non-npm ecosystems",
+      "matchDatasources": ["!npm"],
+      "matchUpdateTypes": ["pin"],
+      "minimumReleaseAge": null,
+      "prBodyNotes": [
+        "⚠️ Renovate's pin flow does not currently wire in release-age metadata (renovatebot/renovate#40288). Manually validate the Minimum Release Age for the pinned version."
+      ]
+    }
+  ]
+}

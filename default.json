@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Baseline every repo of mine extends. Layer the optional profiles in this repo on top; see RENOVATE.md.",
+  "extends": [
+    "config:recommended",
+    "security:minimumReleaseAgeNpm",
+    "github>MihaiBojin/renovate:release-age",
+    "github>MihaiBojin/renovate:security-alerts"
+  ],
+  "lockFileMaintenance": {
+    "enabled": false
+  }
+}
