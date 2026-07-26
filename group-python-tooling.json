@@ -5,6 +5,7 @@
     {
       "description": "One PR for non-major Python packaging/dev tooling updates",
       "groupName": "python dev tooling",
+      "matchDatasources": ["pypi"],
       "matchPackageNames": [
         "build",
         "pip",

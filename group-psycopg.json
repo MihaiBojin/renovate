@@ -5,6 +5,7 @@
     {
       "description": "One PR for the psycopg family",
       "groupName": "psycopg",
+      "matchDatasources": ["pypi"],
       "matchPackageNames": ["psycopg", "psycopg-binary", "psycopg_pool"]
     }
   ]
