@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Astro and its peer-locked companions upgrade together, never one at a time. Integrations pin a peer range on the Astro version, and Starlight plugins pin one on Starlight, so a lone bump installs against a peer it does not satisfy and fails CI on its own.",
+  "packageRules": [
+    {
+      "description": "One PR for the whole Astro ecosystem",
+      "groupName": "astro ecosystem",
+      "matchPackageNames": ["astro", "@astrojs/**", "astro-*", "starlight-*"]
+    }
+  ]
+}

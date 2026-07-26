@@ -20,6 +20,7 @@ opt-in profiles you compose on top of it.
 | grouping | `github>MihaiBojin/renovate:group-non-major` | Collects every non-major update into one PR |
 | automerge | `github>MihaiBojin/renovate:automerge-non-major` | Merges non-major updates once CI is green |
 | mise | `github>MihaiBojin/renovate:mise-manual` | Keeps mise tool pins out of automerge |
+| astro | `github>MihaiBojin/renovate:astro` | Groups Astro, its integrations and Starlight plugins into one PR |
 
 The baseline already pulls in `release-age` and `security-alerts`, so you only
 reference those directly if you are composing a baseline of your own.
@@ -57,6 +58,9 @@ every profile are concatenated rather than replaced. Two consequences:
 - `mise-manual` has to come after `automerge-non-major`. The automerge rule
   matches non-major mise updates too, so reversing them quietly turns automerge
   back on for tool pins.
+- `astro` has to come after `group-non-major`, which otherwise claims the
+  ecosystem's non-major updates for the general batch and splits them from the
+  majors they need to travel with.
 - Anything repo-specific belongs in the repo's own `packageRules`, which are
   applied after everything pulled in through `extends`.
 
@@ -91,9 +95,9 @@ things can do the merging:
   `minimumReleaseAge` are deliberately not counted toward branch success, so a
   repo with no real CI does not start merging on internal checks alone.
 
-Majors are never automerged. They are the updates that need a human, which is
-the whole reason grouping is worth having: peer-locked packages such as `astro`,
-`@astrojs/*` and `astro-og-canvas` only pass CI when they move together.
+Majors are never automerged. They are the updates that need a human, and they
+are also where grouping earns its keep: peer-locked packages only pass CI when
+they move together, which is what the `astro` profile is for.
 
 ## Validating changes
 
