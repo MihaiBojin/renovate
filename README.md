@@ -21,6 +21,9 @@ opt-in profiles you compose on top of it.
 | automerge | `github>MihaiBojin/renovate:automerge-non-major` | Merges non-major updates once CI is green |
 | mise | `github>MihaiBojin/renovate:mise-manual` | Keeps mise tool pins out of automerge |
 | astro | `github>MihaiBojin/renovate:astro` | Groups Astro, its integrations and Starlight plugins into one PR |
+| psycopg | `github>MihaiBojin/renovate:group-psycopg` | Groups psycopg, psycopg-binary and psycopg_pool into one PR |
+| GitHub Actions | `github>MihaiBojin/renovate:group-github-actions` | Groups non-major updates to actions used in workflows into one PR |
+| Python tooling | `github>MihaiBojin/renovate:group-python-tooling` | Groups non-major updates to build/pip/pre-commit/pytest/toml/twine/wheel/wheel-inspect into one PR |
 
 The baseline already pulls in `release-age` and `security-alerts`, so you only
 reference those directly if you are composing a baseline of your own.
@@ -58,9 +61,11 @@ every profile are concatenated rather than replaced. Two consequences:
 - `mise-manual` has to come after `automerge-non-major`. The automerge rule
   matches non-major mise updates too, so reversing them quietly turns automerge
   back on for tool pins.
-- `astro` has to come after `group-non-major`, which otherwise claims the
-  ecosystem's non-major updates for the general batch and splits them from the
-  majors they need to travel with.
+- `astro`, `group-psycopg`, `group-github-actions` and `group-python-tooling`
+  all have to come after `group-non-major` if you compose them together. The
+  catch-all otherwise claims those non-major updates for the general batch
+  first, splitting peer-locked packages from the others they need to travel
+  with.
 - Anything repo-specific belongs in the repo's own `packageRules`, which are
   applied after everything pulled in through `extends`.
 

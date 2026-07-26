@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "GitHub Actions used in CI workflows tend to release patch and minor bumps in the same batch (e.g. the docker/* build/login/buildx/qemu actions, or the core actions/* set); one PR per action multiplies review overhead for changes that already land the same day.",
+  "packageRules": [
+    {
+      "description": "One PR for all non-major GitHub Actions updates",
+      "groupName": "github-actions dependencies",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+    }
+  ]
+}

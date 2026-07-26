@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "psycopg, psycopg-binary and psycopg_pool are published together upstream by the psycopg project and pin compatible versions of each other; one landing without the others leaves the pins mismatched.",
+  "packageRules": [
+    {
+      "description": "One PR for the psycopg family",
+      "groupName": "psycopg",
+      "matchPackageNames": ["psycopg", "psycopg-binary", "psycopg_pool"]
+    }
+  ]
+}
