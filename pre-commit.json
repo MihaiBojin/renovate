@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Turn on Renovate's pre-commit manager, which is off by default, and keep hook updates to one PR. Without this, .pre-commit-config.yaml is invisible to Renovate and hook revisions silently rot for years while everything else stays current.",
+  "extends": [":enablePreCommit"],
+  "packageRules": [
+    {
+      "description": "One PR for pre-commit hook updates",
+      "groupName": "pre-commit hooks",
+      "matchManagers": ["pre-commit"]
+    }
+  ]
+}
