@@ -23,7 +23,7 @@ opt-in profiles you compose on top of it.
 | astro | `github>MihaiBojin/renovate:astro` | Groups Astro, its integrations and Starlight plugins into one PR |
 | psycopg | `github>MihaiBojin/renovate:group-psycopg` | Groups psycopg, psycopg-binary and psycopg_pool into one PR |
 | GitHub Actions | `github>MihaiBojin/renovate:group-github-actions` | Groups non-major updates to actions used in workflows into one PR |
-| Python tooling | `github>MihaiBojin/renovate:group-python-tooling` | Groups non-major updates to pip/pre-commit/pytest/wheel-inspect into one PR |
+| Python tooling | `github>MihaiBojin/renovate:group-python-tooling` | Groups non-major updates to pip/pre-commit/pytest/uv/wheel-inspect into one PR |
 | pre-commit | `github>MihaiBojin/renovate:pre-commit` | Enables the pre-commit manager, which Renovate ships disabled, and groups hook updates |
 | lock file maintenance | `github>MihaiBojin/renovate:lock-file-maintenance` | Regenerates lock files weekly to refresh transitive dependencies |
 

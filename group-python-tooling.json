@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Python packaging and dev tooling (pip, pre-commit, pytest, wheel-inspect) never touches runtime behavior; one PR per tool multiplies review overhead for the updates with the smallest blast radius in the repo.",
+  "description": "Python packaging and dev tooling (pip, pre-commit, pytest, uv, wheel-inspect) never touches runtime behavior; one PR per tool multiplies review overhead for the updates with the smallest blast radius in the repo.",
   "packageRules": [
     {
       "description": "One PR for non-major Python packaging/dev tooling updates",
@@ -10,6 +10,7 @@
         "pip",
         "pre-commit",
         "pytest",
+        "uv",
         "wheel-inspect"
       ],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
