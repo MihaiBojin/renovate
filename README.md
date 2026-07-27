@@ -26,9 +26,14 @@ opt-in profiles you compose on top of it.
 | Python tooling | `github>MihaiBojin/renovate:group-python-tooling` | Groups non-major updates to build/pip/pre-commit/pytest/toml/twine/wheel/wheel-inspect into one PR |
 | pre-commit | `github>MihaiBojin/renovate:pre-commit` | Enables the pre-commit manager, which Renovate ships disabled, and groups hook updates |
 | lock file maintenance | `github>MihaiBojin/renovate:lock-file-maintenance` | Regenerates lock files weekly to refresh transitive dependencies |
+| pin digests | `github>MihaiBojin/renovate:pin-digests` | Pins GitHub Actions to commit digests, keeping the tag as a comment |
 
 The baseline already pulls in `release-age` and `security-alerts`, so you only
 reference those directly if you are composing a baseline of your own.
+
+`pin-digests` covers GitHub Actions only. Docker base images are a separate
+decision — add `docker:pinDigests` to a repo directly if you want those pinned
+too.
 
 ## Composing
 
@@ -70,6 +75,23 @@ every profile are concatenated rather than replaced. Two consequences:
   with.
 - Anything repo-specific belongs in the repo's own `packageRules`, which are
   applied after everything pulled in through `extends`.
+- `pin-digests` should exclude a repo's reference to *its own* published action.
+  Renovate bumps that digest only after a release lands, so a release workflow
+  that pins it verifies the previous release rather than the one being cut.
+  Exclude the single dep in the repo's own `packageRules` and leave every other
+  action pinned:
+
+  ```json
+  {
+    "matchManagers": ["github-actions"],
+    "matchDepNames": ["owner/the-repo-itself"],
+    "pinDigests": false
+  }
+  ```
+
+  Note this has to be a `packageRules` entry. A root-level `pinDigests: false`
+  does not override a rule that set it to `true`, and `pin-digests` sets it
+  through `helpers:pinGitHubActionDigests`, which is rule-based.
 
 ## Pinning
 

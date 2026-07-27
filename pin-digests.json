@@ -1,0 +1,5 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Pin GitHub Actions to immutable commit digests, keeping the tag as a trailing comment. A tag is mutable — anyone who can push tags to an action's repository can repoint it at new code — while a digest cannot be moved. Renovate keeps the digest current, so this costs a bump PR per action rather than manual tracking. Off in the baseline, so repos opt in.",
+  "extends": ["helpers:pinGitHubActionDigests"]
+}
