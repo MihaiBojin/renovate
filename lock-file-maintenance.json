@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Refresh transitive dependencies weekly by regenerating the lock file, and record where release age cannot be enforced for it. Off in the baseline, so repos that want it opt in.",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 5am on monday"]
+  },
+  "packageRules": [
+    {
+      "description": "Minimum Release Age cannot be enforced for lockFileMaintenance on non-npm ecosystems — the package manager controls version resolution",
+      "matchDatasources": ["!npm"],
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "minimumReleaseAge": null,
+      "prBodyNotes": [
+        "⚠️ Renovate's lockFileMaintenance does not validate Minimum Release Age — the package manager performs the version resolution. Review fresh transitive updates manually."
+      ]
+    }
+  ]
+}
