@@ -26,6 +26,7 @@ opt-in profiles you compose on top of it.
 | Python tooling | `github>MihaiBojin/renovate:group-python-tooling` | Groups non-major updates to pip/pre-commit/pytest/uv/wheel-inspect into one PR |
 | pre-commit | `github>MihaiBojin/renovate:pre-commit` | Enables the pre-commit manager, which Renovate ships disabled, and groups hook updates |
 | lock file maintenance | `github>MihaiBojin/renovate:lock-file-maintenance` | Regenerates lock files weekly to refresh transitive dependencies |
+| uvx | `github>MihaiBojin/renovate:uvx` | Bumps tools pinned as `uvx <tool>@<version>` in workflow `run:` lines |
 
 The baseline already pulls in `release-age` and `security-alerts`, so you only
 reference those directly if you are composing a baseline of your own.
