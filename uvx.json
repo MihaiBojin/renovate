@@ -1,0 +1,16 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Track tools pinned inline as `uvx <tool>@<version>` in GitHub Actions workflows. No built-in manager reads a `run:` line, so without this those pins never get a bump PR.",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "uvx <tool>@<version> in workflow files",
+      "managerFilePatterns": ["/(^|/)\\.github/workflows/[^/]+\\.ya?ml$/"],
+      "matchStrings": [
+        "\\buvx\\s+(?<depName>[A-Za-z0-9][A-Za-z0-9._-]*)@(?<currentValue>[0-9][^\\s\"']*)"
+      ],
+      "datasourceTemplate": "pypi",
+      "versioningTemplate": "pep440"
+    }
+  ]
+}
